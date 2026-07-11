@@ -1,0 +1,19 @@
+services:
+  nginx:
+    image: ${IMAGE_NAME}:${IMAGE_VERSION}
+    container_name: nginx-alpine
+
+    ports:
+      - "${HOST_PORT}:${CONTAINER_PORT}"
+
+    volumes:
+      - ${HOST_VOLUME}:${CONTAINER_VOLUME}
+
+    # command: ${NGINX_COMMAND:-}
+
+    networks:
+      - ${NETWORK_NAME}
+
+networks:
+  web-network:
+    name: ${NETWORK_NAME}
